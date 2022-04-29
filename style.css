@@ -1,0 +1,87 @@
+:root {
+    --header-color: hsl(0,100%,99%);
+    --main-color: hsl(280,10%,94%);
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: sans-serif;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 100px calc(100% - 100px);
+}
+
+header, .book-shelf {
+    padding: 0 5%;
+}
+
+header {
+    grid-column: 1 / span 2;
+    height: 100px;
+    background-color: var(--header-color);
+    box-shadow: 0 1px 5px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.general-information {
+    background-color: var(--main-color);
+    border-left: 1px solid black;
+    padding: 0 40px;
+}
+
+.general-information > p:first-child {
+    font-size: 2rem;
+    text-align: center;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.book-log {
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.book-log > div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.book-shelf {
+    padding-top: 40px;
+    background-color: var(--main-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button.add-book {
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    background-color: transparent;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: hsl(280,10%,84%);
+}
+
+button:active {
+    transform: scale(0.98);
+}
