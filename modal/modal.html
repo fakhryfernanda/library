@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal</title>
+    <style>
+
+        .open-modal {
+            cursor: pointer;
+        }
+
+        .modal {
+            visibility: hidden;
+            z-index: 1;
+            width: 500px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px solid black;
+            border-radius: 10px;
+            padding: 10px 15px;
+            background-color: white;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid black;
+            margin-bottom: 10px;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .close-button {
+            border: none;
+            background-color: transparent;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .close-button:hover {
+            cursor: pointer;
+            color: red;
+        }
+
+        .overlay {
+            visibility: hidden;
+            background-color: rgba(0,0,0,0.5);
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        .hidden {
+            transform: scale(0);
+        }
+    </style>
+</head>
+<body>
+    <button class="open-modal">Open Modal</button>
+    <div class="modal">
+        <div class="modal-header">
+            <div class="modal-title">Example Modal</div>
+            <button class="close-button">&times;</button>
+        </div>
+        <div class="modal-body">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id quisquam sapiente fugiat delectus expedita, iusto dolore est itaque libero. Unde sed exercitationem eius? Voluptates est ab exercitationem ut provident quo architecto neque rem officiis asperiores! Repellat numquam ducimus iusto necessitatibus aut, nostrum consectetur velit delectus et nemo voluptate odio voluptas temporibus commodi omnis laborum id totam ex. A esse ipsa quisquam quis veritatis optio consequuntur quaerat, sapiente deleniti enim doloribus quidem magnam reiciendis mollitia voluptatem adipisci repudiandae ducimus debitis sed!
+        </div>
+    </div>
+
+    <div class="overlay"></div>
+
+    <script>
+        const openModal = document.querySelector('.open-modal');
+        const closeButton = document.querySelector('.close-button');
+        const modal = document.querySelector('.modal');
+        const overlay = document.querySelector('.overlay');
+
+        let modalStatus = 'hidden';
+        function popOut(status) {
+            if (status === 'hidden') {
+                modal.style.visibility = 'visible';
+                overlay.style.visibility = 'visible';
+                modalStatus = 'visible';
+            } else if (status === 'visible') {
+                modal.style.visibility = 'hidden';
+                overlay.style.visibility = 'hidden';
+                modalStatus = 'hidden';
+            };
+        }
+
+        openModal.addEventListener('click', () => {
+            popOut(modalStatus);
+        });
+
+        closeButton.addEventListener('click', () => {
+            popOut(modalStatus);
+        });
+
+        // overlay.addEventListener('click', () => {
+        //     popOut(modalStatus);
+        // });
+
+
+    </script>
+</body>
+</html>
