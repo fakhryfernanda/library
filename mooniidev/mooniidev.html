@@ -5,12 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mooniidev Library</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            grid-template-rows: 1fr;
+        }
+
+        .uppercase {
+            text-transform: uppercase;
+        }
+
+        .add-book {
+            background-color: hsl(19,57%,80%);
+        }
+
+        .book-display {
+            /* background-color: red; */
+        }
+    </style>
 </head>
 <body>
     <div class="add-book">
         <div class="logo">
             <img src="./library-icon.svg" alt="Library Icon">
-            <div class="web-title">library</div>
+            <div class="web-title">LIBRARY</div>
         </div>
         <form>
             <input type="text" placeholder="What is the title of the book?">
@@ -20,7 +41,7 @@
                 <input type="checkbox" id="read-prompt">
                 <label for="read-prompt">I have already read this book!</label>
             </div>
-            <button type="submit">add a new book</button>
+            <button type="submit" class="uppercase">add a new book</button>
         </form>
         <div class="project-description">
             <div class="about">
@@ -30,6 +51,17 @@
             <div class="source">☽ Crafted by <a href="#">mooniiDev</a> | <a href="#">Source</a> ☾</div>
         </div>
     </div>
-    <div class="book-display"></div>
+    <div class="book-display">
+        <div class="book-log">
+            <div class="uppercase">books read: <span id="books-read">0</span></div>
+            <div class="uppercase">books unread: <span id="books-unread">0</span></div>
+            <div class="uppercase">total books: <span id="total-books">0</span></div>
+            <button class="uppercase">delete all</button>
+        </div>
+
+        <div class="table">
+
+        </div>
+    </div>
 </body>
 </html>
