@@ -244,6 +244,7 @@
         // });
 
         function blankInput() {
+            // Check if the form receive blank input
             const title = document.getElementById('title').value;
             const author = document.getElementById('author').value;
             const pages = document.getElementById('pages').value;
@@ -252,6 +253,7 @@
         }
 
         function getBookInfo(index) {
+            // Get book information from the form
             const title = document.getElementById('title').value;
             const author = document.getElementById('author').value;
             const pages = document.getElementById('pages').value;
@@ -266,6 +268,7 @@
         }
 
         function Book(getBookInfo) {
+            // Create book object
             this.title = getBookInfo(0);
             this.author = getBookInfo(1);
             this.pages = getBookInfo(2);
@@ -273,6 +276,7 @@
         }
 
         function addNewBook(book) {
+            // Add new book to the table
             const table = document.querySelector('table');
             const row = document.createElement('tr');
             const title = `<td>${book.title}</td>`;
