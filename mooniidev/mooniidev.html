@@ -105,6 +105,10 @@
             color: inherit;
             font-weight: bold;
         }
+
+        .project-description a:hover {
+            text-decoration: underline;
+        }
         
         .about:hover::before {
             position: absolute;
@@ -145,7 +149,6 @@
         }
 
         table, th, tr {
-            /* border: none; */
             border-collapse: collapse;
         }
 
@@ -164,6 +167,14 @@
             padding: 25px 0;
             font-size: 1.25 rem;
         }
+
+        .fa-check {
+            color: green;
+        }
+
+        .fa-xmark {
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -173,14 +184,14 @@
             <div class="web-title">LIBRARY</div>
         </div>
         <form>
-            <input type="text" placeholder="What is the title of the book?">
-            <input type="text" placeholder="Who is the author of the book?">
-            <input type="text" placeholder="How many pages are in the book?">
+            <input type="text" id="title" placeholder="What is the title of the book?">
+            <input type="text" id="author" placeholder="Who is the author of the book?">
+            <input type="text" id="pages" placeholder="How many pages are in the book?">
             <div class="checkbox">
                 <label for="read-prompt">I have already read this book!</label>
                 <input type="checkbox" id="read-prompt">
             </div>
-            <button type="submit" class="uppercase">add a new book</button>
+            <button type="button" id="add-book-button" class="uppercase">add a new book</button>
         </form>
         <div class="project-description">
             <div class="about">
@@ -206,17 +217,72 @@
                 <th>STATUS</th>
                 <th>REMOVAL</th>
             </tr>
-
-            <tr>
-                <td>Aku</td>
-                <td>Kamu</td>
-                <td>200</td>
-                <td>sudah</td>
-                <td>Yes</td>
-            </tr>
         </table>
 
-        </div>
     </div>
+
+    <script>
+        function blankInput() {
+            const title = document.getElementById('title').value;
+            const author = document.getElementById('author').value;
+            const pages = document.getElementById('pages').value;
+
+            return (title == '' || author == '' || pages == '');
+        }
+
+        function getBookInfo(index) {
+            const title = document.getElementById('title').value;
+            const author = document.getElementById('author').value;
+            const pages = document.getElementById('pages').value;
+            const readPrompt = document.getElementById('read-prompt').checked;
+            
+            switch(index) {
+                case 0: return title; break;
+                case 1: return author; break;
+                case 2: return pages; break;
+                case 3: return readPrompt; break;
+            }
+        }
+
+        function Book(getBookInfo) {
+            this.title = getBookInfo(0);
+            this.author = getBookInfo(1);
+            this.pages = getBookInfo(2);
+            this.readPrompt = getBookInfo(3);
+        }
+
+        function addNewBook(book) {
+            const table = document.querySelector('table');
+            const row = document.createElement('tr');
+            const title = `<td>${book.title}</td>`;
+            const author = `<td>${book.author}</td>`;
+            const pages = `<td>${book.pages}</td>`;
+            if (book.readPrompt) {
+                readPrompt = `<td><i class="fa-solid fa-check"></i></td>`;
+            } else {
+                readPrompt = `<td><i class="fa-solid fa-xmark"></i></td>`;
+            };
+            const trashIcon = `<td><i class="fa-solid fa-trash"></i></td>`;
+            
+            row.innerHTML = `${title}\n${author}\n${pages}\n${readPrompt}\n${trashIcon}`;
+            table.appendChild(row);
+        }
+
+        const addBookButton = document.getElementById('add-book-button');
+        addBookButton.addEventListener('click', () => {
+            if (!blankInput()) {
+                let book = new Book(getBookInfo);
+                // console.log(book);
+                // console.log(addNewBook(book));
+                addNewBook(book);
+                book = null;
+            } else {
+                console.log('BLANK');
+            };
+            
+        });
+
+
+    </script>
 </body>
 </html>
