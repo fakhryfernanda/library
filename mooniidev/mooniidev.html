@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mooniidev Library</title>
+    <script src="https://kit.fontawesome.com/e0f8177fe6.js" crossorigin="anonymous"></script>
     <style>
         body {
             margin: 0;
@@ -19,12 +20,105 @@
         }
 
         .add-book {
+            position: relative;
             background-color: hsl(19,57%,80%);
+            padding: 0 20px;
         }
 
         .logo {
             height: 100px;
             margin-bottom: 50px;
+            display: flex;
+            /* justify-content: center; */
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            width: 80px;
+            aspect-ratio: 1;
+        }
+
+        .web-title {
+            font-size: 2.5rem;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 40px;
+        }
+
+        form input {
+            width: 100%;
+            padding-bottom: 5px;
+            border: none;
+            outline: none;
+            border-bottom: 1px dashed black;
+            background-color: transparent;
+            font-size: 1.1rem;
+        }
+
+        form input::placeholder {
+            color: rgba(0,0,0,0.5);
+            font-size: 1.1rem;
+        }
+
+        form input:focus {
+            border-bottom: 1px dashed white;
+        }
+
+        form .checkbox {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 1.1rem;
+        }
+
+        form .checkbox input {
+            width: fit-content;
+            transform: scale(1.5);
+        }
+
+        form button {
+            border: none;
+            color: white;
+            padding: 20px 30px;
+            background-color: hsl(207,47%,20%);
+            align-self: center;
+        }
+
+        form button:hover {
+            cursor: pointer;
+            background-color: hsl(207,47%,10%);
+        }
+
+        .project-description {
+            position: absolute;
+            bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .project-description a {
+            text-decoration: none;
+            color: inherit;
+            font-weight: bold;
+        }
+        
+        .about:hover::before {
+            position: absolute;
+            bottom: 50px;
+            left: 30px;
+            content: 'This is a small library app, where you can add new books, delete old ones, change status of your books, to read/unread, and see your library statistics. The data is stored in localStorage';
+            background-color: hsl(208,48%,24%);
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .about p {
+            display: inline;
         }
 
         .book-display {
@@ -83,8 +177,8 @@
             <input type="text" placeholder="Who is the author of the book?">
             <input type="text" placeholder="How many pages are in the book?">
             <div class="checkbox">
-                <input type="checkbox" id="read-prompt">
                 <label for="read-prompt">I have already read this book!</label>
+                <input type="checkbox" id="read-prompt">
             </div>
             <button type="submit" class="uppercase">add a new book</button>
         </form>
@@ -93,7 +187,7 @@
                 <i class="fa-solid fa-circle-info"></i>
                 <p>Hover to read about this project</p>
             </div>
-            <div class="source">☽ Crafted by <a href="#">mooniiDev</a> | <a href="#">Source</a> ☾</div>
+            <div class="source">☽ Crafted by <a href="#">mooniiDev</a> | <a href="#">Original Source</a> ☾</div>
         </div>
     </div>
     <div class="book-display">
