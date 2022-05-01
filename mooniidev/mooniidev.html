@@ -168,12 +168,25 @@
             font-size: 1.25 rem;
         }
 
+        .remove-button {
+            cursor: pointer;
+        }
+
         .fa-check {
             color: green;
         }
 
         .fa-xmark {
             color: red;
+        }
+
+        .container > div {
+            z-index: 10;
+            width: 150px;
+            aspect-ratio: 1;
+            display: flex;
+            background-color: red;
+            border: 1px solid blue;
         }
     </style>
 </head>
@@ -222,6 +235,14 @@
     </div>
 
     <script>
+        // const divs = document.querySelectorAll('.container > div')
+        // divs.forEach(div => {
+        //     div.addEventListener('click', (e) => {
+        //         console.log(e.target.parentElement);
+        //         e.target.style.backgroundColor = 'green';
+        //     });
+        // });
+
         function blankInput() {
             const title = document.getElementById('title').value;
             const author = document.getElementById('author').value;
@@ -262,13 +283,24 @@
             } else {
                 readPrompt = `<td><i class="fa-solid fa-xmark"></i></td>`;
             };
-            const trashIcon = `<td><i class="fa-solid fa-trash"></i></td>`;
+            const trashIcon = `<td><i class="fa-solid fa-trash remove-button"></i></td>`;
             
             row.innerHTML = `${title}\n${author}\n${pages}\n${readPrompt}\n${trashIcon}`;
             table.appendChild(row);
         }
 
+        document.addEventListener('click', (e) => {
+            if (e.target.className.includes('remove-button')) {
+                removeBook(e);
+            };
+        })
+
+        function removeBook(event) {
+            event.target.parentElement.parentElement.remove();
+        }
+
         const addBookButton = document.getElementById('add-book-button');
+
         addBookButton.addEventListener('click', () => {
             if (!blankInput()) {
                 let book = new Book(getBookInfo);
@@ -281,7 +313,6 @@
             };
             
         });
-
 
     </script>
 </body>
